@@ -8,18 +8,18 @@ import DiceRoller from './components/DiceRoller.jsx';
 
 
 function App() {
-  const [number, setNumber] = useState(null);
+  const [roll, setRoll] = useState(null);
 
   const handleRoll = (value) => {
     console.log("Rolled number:", value);
-    setNumber(value);
+    setRoll(value);
   }
   
   return (
     <>
       <p>Hello from the App!</p>
       <div>
-        <Dice value={number}/>
+        <Dice value={roll}/>
         <DiceRoller onRoll={handleRoll}/>
       </div>
     </>
