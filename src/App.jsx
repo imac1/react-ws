@@ -4,23 +4,26 @@ import './App.css'
 import React from 'react';
 import Dice from './components/Dice.jsx';
 import DiceRoller from './components/DiceRoller.jsx';
+import DiceHistory from './components/DiceHistory.jsx';
 
 
 
 function App() {
-  const [number, setNumber] = useState(null);
+  
+  const [rolls, setRolls] = useState([])
 
   const handleRoll = (value) => {
     console.log("Rolled number:", value);
-    setNumber(value);
+    setRolls(prevRolls => [...prevRolls, value])
   }
   
   return (
     <>
       <p>Hello from the App!</p>
       <div>
-        <Dice value={number}/>
+        <Dice value={rolls[rolls.length-1] > 0 ? rolls[rolls.length-1] : null}/>
         <DiceRoller onRoll={handleRoll}/>
+        <DiceHistory rolls={rolls} />
       </div>
     </>
   );
